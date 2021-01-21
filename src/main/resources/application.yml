@@ -6,7 +6,7 @@ server:
 app:
   kafka:
     bootstrapAddress: 127.0.0.1:9092
-    group: crypto-currency-exchange
+    group: crypto-currency-exchange-group
   cryptoCurrencyExchange:
     spotPriceUrl: https://api.coinbase.com/v2/prices/spot?currency=%s
     defaultCurrency: NZD

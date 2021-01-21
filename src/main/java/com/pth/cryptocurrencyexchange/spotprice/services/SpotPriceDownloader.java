@@ -10,18 +10,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+import javax.annotation.PostConstruct;
+
 @Service
 @Slf4j
 public class SpotPriceDownloader {
-
+    public static String CURRENCY; //TODO: How to use for multiple request with different currency?
     @Value("${app.cryptoCurrencyExchange.spotPriceUrl}")
     private String spotPriceUrl;
     @Value("${app.cryptoCurrencyExchange.defaultCurrency}")
     private String defaultCurrency;
+
+
+    @PostConstruct
+    public void postConstruct() {
+        CURRENCY = defaultCurrency;
+    }
+
+    @Scheduled(fixedDelayString = "${app.schedule.spotPrice.interval:1000}")
+    public void getSpotPriceByCurrencyScheduled() {
+//        getSpotPriceByCurrency()
+        log.info("Scheduled");
+    }
 
     public String getSpotPriceByCurrency(String currency) {
         if (StringUtils.isBlank(currency)) {
@@ -37,6 +52,8 @@ public class SpotPriceDownloader {
         }
     }
 
+
+    // TODO: Move to the publisher class
     @Autowired
     private KafkaTemplate kafkaTemplate;
 

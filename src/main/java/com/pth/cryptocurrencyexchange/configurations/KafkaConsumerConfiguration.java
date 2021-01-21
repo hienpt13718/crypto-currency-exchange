@@ -1,6 +1,7 @@
 package com.pth.cryptocurrencyexchange.configurations;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.serialization.IntegerDeserializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,7 +48,7 @@ public class KafkaConsumerConfiguration {
 
 
     @KafkaListener(topics = "counts")
-    public void countsListner(String message) {
+    public void countsListener(String message) {
         System.out.println("Received message " + message);
     }
 }

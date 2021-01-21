@@ -1,0 +1,63 @@
+server:
+  port: 8087
+  servlet:
+    context-path: /cce-exchange
+
+app:
+  kafka:
+    bootstrapAddress: 127.0.0.1:9092
+    group: crypto-currency-exchange
+  cryptoCurrencyExchange:
+    spotPriceUrl: https://api.coinbase.com/v2/prices/spot?currency=%s
+    defaultCurrency: NZD
+  schedule:
+    spotPrice:
+      interval: 1000
+    profitFactor:
+      interval: 1000
+  profitFactors: 5,10,12
+
+
+spring.cloud.stream:
+  function:
+    definition: process
+    bindings:
+      process-in-0: words
+      process-out-0: counts
+  #  bindings:
+  #    input:
+  #      destination: input
+  #    output:
+  #      destination: output
+
+  kafka:
+    streams:
+      binder:
+        applicationId: crypto-currency-exchange
+        configuration:
+          commit.interval.ms: 100
+          default:
+            key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+#Enable metrics
+management:
+  metrics:
+    export:
+      wavefront:
+        enabled: false
+      prometheus:
+        enabled: false
+        rsocket:
+          enabled: false
+  endpoint:
+    health:
+      show-details: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: health,info,bindings
+#        include: metrics,health,info,bindings
+#Enable logging to debug for spring kafka config
+#logging:
+#  level:
+#    org.springframework.kafka.config: debug

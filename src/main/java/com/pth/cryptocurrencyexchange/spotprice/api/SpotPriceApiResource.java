@@ -16,6 +16,8 @@ public class SpotPriceApiResource {
 
     @GetMapping
     public String getSpot(@RequestParam(value = "currency", required = false) String currency) {
-        return spotPriceDownloader.getSpotPrice(currency);
+//        return spotPriceDownloader.getSpotPrice(currency);
+        spotPriceDownloader.sendMessage(currency);
+        return "OK";
     }
 }

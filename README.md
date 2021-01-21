@@ -1,9 +1,9 @@
 # crypto-currency-exchange
 Build a crypto currency exchange to allow its customers to buy and sell crypto currencies.
 
-# Noted: Assum that This guide is used for Windows system.
+# Noted: Assume that This guide is used for Windows system.
 # 1. Requirements
-  * Donwload Kafka (binary version) at: https://kafka.apache.org/downloads, and extract to a folder (I assum the folder is C:/myapp/Kafka and I used version 2.12-2.7.0, so root Kafka full path is C:/myapp/Kafka/kafka_2.12-2.7.0)
+  * Donwload Kafka (binary version) at: https://kafka.apache.org/downloads, and extract to a folder (I assume the folder is C:/myapp/Kafka and I used version 2.12-2.7.0, so root Kafka full path is C:/myapp/Kafka/kafka_2.12-2.7.0)
   * Download and install JDK with version >= 11 (Please add java environment variable as well https://docs.oracle.com/javase/tutorial/essential/environment/paths.html)
 
 # 2. Run application:

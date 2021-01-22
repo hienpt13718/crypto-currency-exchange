@@ -22,8 +22,8 @@ spring.cloud.stream:
   function:
     definition: process
     bindings:
-      process-in-0: words
-      process-out-0: counts
+      process-in-0: prices
+      process-out-0: display-prices
   #  bindings:
   #    input:
   #      destination: input

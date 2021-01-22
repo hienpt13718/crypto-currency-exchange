@@ -1,9 +1,6 @@
-package com.pth.cryptocurrencyexchange.exceptions;
+package com.pth.cryptocurrencyexchange.core.exceptions;
 
-public class ApiRunTimeException extends RuntimeException {
-
-    public ApiRunTimeException() {
-    }
+public class ApiRunTimeException extends AbstractApiException {
 
     public ApiRunTimeException(String message) {
         super(message);

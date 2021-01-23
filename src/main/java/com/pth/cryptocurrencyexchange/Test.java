@@ -1,10 +1,5 @@
 package com.pth.cryptocurrencyexchange;
 
-import com.pth.cryptocurrencyexchange.pricing.domain.PricingRequest;
-
-import java.math.BigDecimal;
-import java.util.Random;
-
 public class Test {
 
     public static void main(String[] args) {

@@ -14,7 +14,7 @@ import java.math.BigDecimal;
     "amount",
     "totalPrice"
 })
-public class PricingDataResponse {
+public class PricingResponse {
     @JsonProperty("id")
     private String id;
     @JsonProperty("spotPrice")

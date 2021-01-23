@@ -28,10 +28,7 @@ public class PricingPublisher {
 
             @Override
             public void onSuccess(SendResult<String, String> stringStringSendResult) {
-                log.info("Send message={} successfully, with offset={}, key-value={}, data={}", message,
-                        stringStringSendResult.getRecordMetadata().offset(),
-                        stringStringSendResult.getProducerRecord().key() + "-" + stringStringSendResult.getProducerRecord().value(),
-                        stringStringSendResult.getRecordMetadata());
+                log.debug("Message is sent successfully");
             }
         });
     }

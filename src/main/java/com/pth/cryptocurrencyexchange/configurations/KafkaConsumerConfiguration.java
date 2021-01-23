@@ -45,8 +45,8 @@ public class KafkaConsumerConfiguration {
     }
 
 
-    @KafkaListener(topics = "${spring.cloud.stream.function.bindings.process-out-0}")
-    public void countsListener(String message) {
-        System.out.println("Received message " + message);
-    }
+//    @KafkaListener(topics = "${spring.cloud.stream.function.bindings.process-out-0}")
+//    public void countsListener(String message) {
+//        System.out.println("Received message " + message);
+//    }
 }

@@ -1,35 +1,31 @@
 package com.pth.cryptocurrencyexchange.pricing.api;
 
-import com.pth.cryptocurrencyexchange.pricing.domain.PricingDataResponse;
+import com.pth.cryptocurrencyexchange.pricing.domain.BuyBTCRequest;
+import com.pth.cryptocurrencyexchange.pricing.domain.BuyBTCResponse;
 import com.pth.cryptocurrencyexchange.pricing.domain.PricingRequest;
-import com.pth.cryptocurrencyexchange.pricing.kafka.publisher.PricingPublisher;
-import com.pth.cryptocurrencyexchange.pricing.services.PricingCalculatorService;
-import com.pth.cryptocurrencyexchange.pricing.services.PricingCalculatorServiceImpl;
-import com.pth.cryptocurrencyexchange.pricing.services.SpotPriceDownloader;
+import com.pth.cryptocurrencyexchange.pricing.domain.PricingResponse;
+import com.pth.cryptocurrencyexchange.pricing.services.PricingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/spot")
+@RequestMapping("api")
 public class PricingApiResource {
-
     @Autowired
-    private PricingPublisher pricingPublisher;
+    private PricingService pricingService;
 
-    @Autowired
-    private PricingCalculatorService pricingCalculatorService;
-
-    @Autowired
-    private SpotPriceDownloader spotPriceDownloader;
-
-    @GetMapping
-    public String getSpot(@RequestParam(value = "currency", required = false) String currency) {
-        spotPriceDownloader.testPricingDislay();
-        return "OK";
+    @GetMapping("/buy")
+    public PricingResponse getPriceHaveToPayWhenBuying(@RequestBody PricingRequest pricingRequest) {
+        return pricingService.getPriceHaveToPayWhenBuying(pricingRequest);
     }
 
-    @PostMapping("/price")
-    public PricingDataResponse getPriceNeedToBy(@RequestBody PricingRequest pricingRequest) {
-        return pricingCalculatorService.getPricingDataResponse(pricingRequest);
+    @GetMapping("/sell")
+    public PricingResponse getPriceWillReceiveWhenSelling(@RequestBody PricingRequest pricingRequest) {
+        return pricingService.getPriceWillReceiveWhenSelling(pricingRequest);
+    }
+
+    @GetMapping("/getAmountCanBeBought")
+    public BuyBTCResponse getAmountBCTCanBy(@RequestBody BuyBTCRequest amountBTCRequest) {
+        return pricingService.getAmountBTCCanBeBought(amountBTCRequest);
     }
 }

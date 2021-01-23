@@ -1,5 +1,6 @@
 package com.pth.cryptocurrencyexchange.pricing.api;
 
+import com.pth.cryptocurrencyexchange.core.constants.CoreConstants;
 import com.pth.cryptocurrencyexchange.pricing.domain.BuyBTCRequest;
 import com.pth.cryptocurrencyexchange.pricing.domain.BuyBTCResponse;
 import com.pth.cryptocurrencyexchange.pricing.domain.PricingRequest;
@@ -13,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class PricingApiResource {
     @Autowired
     private PricingService pricingService;
+
+    @GetMapping("/ping")
+    public String ping() {
+        return CoreConstants.PING_SUCCESS_MESSAGE;
+    }
 
     @GetMapping("/buy")
     public PricingResponse getPriceHaveToPayWhenBuying(@RequestBody PricingRequest pricingRequest) {

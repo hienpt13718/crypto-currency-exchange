@@ -7,6 +7,10 @@ public class ApiGlobalResponse {
     private String message;
     private List<ApiParameterError> errors = new ArrayList<>();
 
+    public ApiGlobalResponse(String message) {
+        this.message = message;
+    }
+
     public ApiGlobalResponse (final String message, final List<ApiParameterError> errors) {
         this.message = message;
         this.errors = errors;

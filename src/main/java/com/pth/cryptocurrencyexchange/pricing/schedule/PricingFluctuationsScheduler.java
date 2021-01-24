@@ -2,7 +2,7 @@ package com.pth.cryptocurrencyexchange.pricing.schedule;
 
 import com.pth.cryptocurrencyexchange.pricing.cache.CurrencyCache;
 import com.pth.cryptocurrencyexchange.pricing.cache.CurrencyCacheData;
-import com.pth.cryptocurrencyexchange.pricing.domain.SpotPriceResponse.SpotPriceData;
+import com.pth.cryptocurrencyexchange.pricing.domain.SpotPriceData;
 import com.pth.cryptocurrencyexchange.pricing.kafka.publisher.PricingPublisher;
 import com.pth.cryptocurrencyexchange.pricing.services.AbstractProfitFactorProvider;
 import com.pth.cryptocurrencyexchange.pricing.services.SpotPriceDownloader;

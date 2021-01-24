@@ -1,13 +1,8 @@
 package com.pth.cryptocurrencyexchange.pricing.services;
 
-import com.pth.cryptocurrencyexchange.pricing.domain.BuyBTCRequest;
-import com.pth.cryptocurrencyexchange.pricing.domain.BuyBTCResponse;
-import com.pth.cryptocurrencyexchange.pricing.domain.PricingRequest;
-import com.pth.cryptocurrencyexchange.pricing.domain.PricingResponse;
-import com.pth.cryptocurrencyexchange.pricing.domain.SpotPriceResponse.SpotPriceData;
+import com.pth.cryptocurrencyexchange.pricing.domain.*;
 import com.pth.cryptocurrencyexchange.pricing.handler.PricingCalculateHandler;
 import com.pth.cryptocurrencyexchange.util.MyStringUtil;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

@@ -4,7 +4,7 @@ Build a cryptocurrency exchange to allow its customers to buy and sell cryptocur
 # Noted: Assume that This guide is used for Windows system.
 # 1. Requirements
   * Download Kafka (binary version) at: https://kafka.apache.org/downloads, and extract to a folder (I assume the folder is C:/myapp/Kafka and I used version 2.12-2.7.0, so root Kafka full path is C:/myapp/Kafka/kafka_2.12-2.7.0)
-  * Download and install JDK with a version >= 11 (Please add java environment variable as well https://docs.oracle.com/javase/tutorial/essential/environment/paths.html)
+  * Download and install JDK with a version >= 11 (Please add java environment variable as well (JAVA_HOME) https://docs.oracle.com/javase/tutorial/essential/environment/paths.html)
 
 # 2. Run application:
   # 2.1. Run Kafka:
@@ -36,3 +36,32 @@ Build a cryptocurrency exchange to allow its customers to buy and sell cryptocur
     }<br />
     
   * How much NZD does a customer receive when selling {X} BTC?
+    Open the link `localhost:8087/cce-exchange/api/sell` in Postman with the following parameters: <br />
+    Method: GET <br />
+    Body type: JSON <br />
+    Body data: <br />
+    { <br />
+    "currency": "", <br />
+    "amount": 4 <br />
+    }<br />
+
+* How much BTC do I pay/get for x NZD?
+  Open the link `localhost:8087/cce-exchange/api/getAmountCanBeBought` in Postman with the following parameters: <br />
+  Method: GET <br />
+  Body type: JSON <br />
+  Body data: <br />
+  { <br />
+  "currency": "", <br />
+  "amountOfMoney": 45000 <br />
+  }<br />
+  
+    <b>Noted: If `currency` parameter is not provided, so the default currency will be NZD.</b>
+  # 3. Explains which API you have chosen to retrieve pricing information and why?
+    The API that I chose is: https://api.coinbase.com/v2/prices/spot?currency=NZD. 
+    Because I am familiar with the rest API.
+  # 4. Approximate time:
+    - Preparation: 1 hour <br/>
+    - Coding: 8 hours (including tests) <br/>
+    - Documentation: 30 minutes <br/>
+    - Building and testing: 30 minutes <br/>
+    - Grand total: 10 hours <br/>

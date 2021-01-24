@@ -7,17 +7,16 @@ import com.pth.cryptocurrencyexchange.core.constants.CoreConstants;
 import com.pth.cryptocurrencyexchange.core.exceptions.ApiRunTimeException;
 import com.pth.cryptocurrencyexchange.pricing.cache.CurrencyCache;
 import com.pth.cryptocurrencyexchange.pricing.cache.CurrencyCacheData;
+import com.pth.cryptocurrencyexchange.pricing.domain.SpotPriceData;
 import com.pth.cryptocurrencyexchange.pricing.domain.SpotPriceResponse;
 import com.pth.cryptocurrencyexchange.util.MyStringUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-
 import java.util.Objects;
 
 @Service
@@ -36,7 +35,7 @@ public class SpotPriceDownloader {
         cacheCurrencyIfHasNewValue(defaultCurrency);
     }
 
-    public SpotPriceResponse.SpotPriceData getSpotPriceByCurrencyAndCacheIfNeeded(String currency) {
+    public SpotPriceData getSpotPriceByCurrencyAndCacheIfNeeded(String currency) {
         String availableCurrency = MyStringUtil.stripAndDefaultString(currency, defaultCurrency);
 
         final String urlWithCurrencyParam = String.format(spotPriceUrl, availableCurrency);
